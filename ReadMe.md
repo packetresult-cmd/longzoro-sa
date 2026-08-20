@@ -1,21 +1,21 @@
-# Project Repository
+# longzoro-analyzer-view
 
-이 프로젝트는 Docker 기반의 서비스 환경을 구축하고 관리하기 위한 설정을 포함하고 있습니다.
+This project contains configurations for building and managing a Docker-based service environment from an analyst's perspective.
 
-## 작성자
+## Author
 PacketResult
 
-## 포함된 파일 및 설명
+## Included Files and Descriptions
 
-- **`.gitignore`**: Git 관리에서 제외할 파일이나 디렉토리 목록을 정의합니다.
-- **`docker-compose.yml`**: Docker 컨테이너 오케스트레이션을 위한 설정 파일입니다. 서비스 환경을 쉽게 구축하고 실행할 수 있습니다.
-- **`Dockerfile`**: Docker 이미지 빌드를 위한 설정 파일입니다. 애플리케이션의 실행 환경을 정의합니다.
-- **`docker-reset.bat`**: Windows 환경에서 Docker 컨테이너 및 볼륨 등을 초기화하기 위한 배치 파일입니다.
-- **`gitupload.sh`**: Git 저장소에 변경 사항을 업로드하기 위한 쉘 스크립트입니다.
-- **`ReadMe.md`**: 현재 이 프로젝트에 대한 설명 문서입니다.
+- **`.gitignore`**: Defines files and directories to be excluded from Git version control.
+- **`docker-compose.yml`**: Configuration file for Docker container orchestration, allowing you to easily set up and run the service environment.
+- **`Dockerfile`**: Configuration file for building Docker images, defining the runtime environment for the application.
+- **`docker-reset.bat`**: A batch file for resetting Docker containers and volumes in a Windows environment.
+- **`gitupload.sh`**: A shell script for uploading changes to the Git repository.
+- **`ReadMe.md`**: Documentation providing an overview of this project.
 
-## 사용 방법
+## How to Use
 
-1. **Docker 환경 실행**:
+1. **Run the Docker environment**:
    ```bash
    docker-compose up -d
