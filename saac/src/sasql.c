@@ -2,7 +2,7 @@
 
 #include "version.h"
 
-#ifdef _SASQL//�����
+#ifdef _SASQL//�����?
 
 #include "main.h"
 #include "sasql.h"
@@ -60,11 +60,11 @@ static int readConfig( char *path )
         if( strcmp( command , "sql_IP" ) == 0 ){
             strcmp( config.sql_IP , param ) ;
             snprintf( config.sql_IP , sizeof( config.sql_IP) , param );
-            printf("\n���ݿ��ַ��  %s",config.sql_IP);
+            printf("\n���ݿ��ַ��?  %s",config.sql_IP);
         } else if( strcmp( command , "sql_Port" ) == 0 ){
         		config.sql_Port = atoi( param );
             snprintf( config.sql_Port1 , sizeof( config.sql_Port1) , param );
-				  	printf("\n���ݿ�˿ڣ�  %d",config.sql_Port);
+				  	printf("\n���ݿ�˿ڣ�?  %d",config.sql_Port);
         } else if( strcmp( command , "sql_ID" ) == 0 ){
         		strcmp( config.sql_ID , param ) ;
             snprintf( config.sql_ID , sizeof( config.sql_ID) , param );
@@ -110,7 +110,7 @@ BOOL sasql_init( void )
 {
 		if( mysql_init(&mysql) == NULL & readConfig("acserv.cf"))
 		{
-			  printf("\n���ݿ��ʼ��ʧ�ܣ�");
+			  printf("\n���ݿ��ʼ��ʧ�ܣ�?");
 			  exit(1);
 		    return FALSE;
 		}
@@ -119,7 +119,7 @@ BOOL sasql_init( void )
 	          config.sql_IP,
 	          config.sql_ID,//�ʺ�
 	          config.sql_PS,//����
-	          config.sql_DataBase,//ѡ������Ͽ�
+	          config.sql_DataBase,//ѡ������Ͽ�?
 	          config.sql_Port,
 	          NULL,
 	          0 ) )
@@ -132,11 +132,11 @@ BOOL sasql_init( void )
 			"create table if not exists USERS ("
 			"  USERNAME varchar(16) character set utf8 collate utf8_bin NOT NULL,"
 			"  PASSWORD varchar(16) character set utf8 collate utf8_bin NOT NULL,"
-			"  REGISTER datetime NOT NULL default '0000-00-00 00:00:00',"
+			"  REGISTER datetime NOT NULL default now(),"
 			"  PATH varchar(10) default '',"
 			"  PRIMARY KEY (USERNAME)"
 			")");
-	printf("\n数据库连接成功！\n");
+	printf("\n?��?��库连?��?��?���?\n");
 
 	return TRUE;
 }
@@ -161,7 +161,7 @@ int sasql_query(char *nm, char *pas){
 	  	if(strcmp(pas,mysql_row[1]) == 0){
 	  		return 1;
 		  }else{
-		  	printf("�û�%s�������\n",nm);
+		  	printf("�û�%s�������?\n",nm);
 		  	return 2;
 		  }
 	  }else{
@@ -169,11 +169,11 @@ int sasql_query(char *nm, char *pas){
 	  	return 3;
 	  }
 	}else{
-		printf("\n���ݿ����ʧ�ܣ�\n");
+		printf("\n���ݿ����ʧ�ܣ�?\n");
 		printf("�����������ݿ�...");
 		sasql_close();
 		sasql_init();
-		printf("���\n");
+		printf("���?\n");
 		return 0;
 	}
 }
@@ -185,7 +185,7 @@ BOOL sasql_register(char *id, char *ps)
 //	if(AutoReg!=1)return FALSE;
 	sprintf(sqlstr, "insert into USERS (USERNAME,PASSWORD,REGISTER,PATH) VALUES (BINARY'%s','%s',NOW(),'char/0x%x')", id, ps, getHash(id) & 0xff);
 	if(!mysql_query(&mysql,sqlstr)){
-		printf("\n���û�ע��ɹ���\n");
+		printf("\n���û�ע��?����\n");
 		return TRUE;
 	}
 	printf("\n���û�ע��ʧ�ܣ�\n");
@@ -209,7 +209,7 @@ BOOL sasql_add_lock( char *idip )
 	char sqlstr[256];
 	sprintf(sqlstr, "INSERT INTO %s (USERNAME) VALUES (BINARY'%s')", config.sql_LOCK, idip);
 	if(!mysql_query(&mysql,sqlstr)){
-			printf("\n�������%s�ɹ���\n",idip);
+			printf("\n�������?%s�ɹ���\n",idip);
 			return TRUE;
 	}
 	return FALSE;
@@ -220,7 +220,7 @@ BOOL sasql_del_lock( char *idip )
 	char sqlstr[256];
 	sprintf(sqlstr, "delete from %s where USERNAME=BINARY'%s'", config.sql_LOCK, idip);
 	if(!mysql_query(&mysql,sqlstr)){
-		printf("\n�������%s�ɹ���\n",idip);
+		printf("\n�������?%s�ɹ���\n",idip);
 		return TRUE;
 	}
 	return FALSE;

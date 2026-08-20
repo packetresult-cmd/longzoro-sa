@@ -1,0 +1,31 @@
+version: '3.8'
+
+services:
+  db:
+    image: mysql:8.0
+    container_name: stoneage-mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    restart: always
+
+  app:
+    build: .
+    container_name: stoneage-app
+    depends_on:
+      - db
+    environment:
+      - DB_HOST=db
+      - MYSQL_ROOT_PASSWORD=rootpassword
+      - DB_USER=sa
+      - DB_PASS=123456   # <- 여기에 사용할 비밀번호를 명시하세요
+    ports:
+      - "2222:22"
+      - "9065:9065"
+    restart: always
+
+volumes:
+  mysql_data:

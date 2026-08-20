@@ -1,7 +1,7 @@
-sql_IP 127.0.0.1
+sql_IP 118.42.222.96
 sql_Port 3306
-sql_ID root
-sql_PS password
+sql_ID sa
+sql_PS 123456
 sql_DataBase sa
 sql_LOCK user_lock
 AutoReg 1
